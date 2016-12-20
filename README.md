@@ -1,1 +1,67 @@
-# fcc_nightlife_app
+# FCC - Nightlife App
+
+## User Stories:
+* As an authenticated user, I can view all bars in my area.
+* As an authenticated user, I can add myself to a bar to indicate I am going there tonight.
+* As an authenticated user, I can remove myself from a bar if I no longer want to go there.
+* As an authenticated user, when I login I should not have to search again.
+
+&nbsp;
+
+## Architecture:
+
+1. **Schema:**
+```javascript 
+{
+
+}
+```
+
+&nbsp;
+2. **Routes:**
+* __/__
+    * Shows all polls as a list to un/authenticated users.
+    * Links to:
+        * Login Page
+        * Poll page (authenticated)
+        * New Poll Page (authenticated)
+* __/new-poll__(authenticated)
+    * POST
+    * Create a new poll with:
+        * Title or question
+        * Option 1 and Option 2(required)
+        * More options
+    * Links to:
+        * Home page
+        * Poll page (authenticated)
+        * My Polls Page (authenticated)
+* __/my-polls__(authenticated):
+    * Shows all my polls
+    * Links to:
+        * Home page
+        * Poll page (authenticated)
+        * New Poll Page (authenticated
+* __/poll/${id}__
+    * User can vote - POST
+    * After it (or as a logged user that has alread voted) user can see results
+
+&nbsp;
+3. **Specifications:**
+
+* Front End:
+    * PUG(Jade)
+    * jQuery
+    * Materialize
+* Back End:
+    * NodeJS
+    * Express
+* Testing(Backend:
+    * Mocha
+    * Supertest
+* Other
+    * MongoDB + mLab
+    * Heroku
+    
+---
+## To Do's
+
