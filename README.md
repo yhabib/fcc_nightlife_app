@@ -13,17 +13,30 @@
 1. **Schema:**
 ```javascript 
 {
+    _id: {
+        type: ObjectId,
+        required: true
+    }, 
+    placeId: {
+        type: String,
+        required
+    },
+    visitors: {
+        type: Number,
+        required
+    }
 
 }
 ```
 
 &nbsp;
-2. **Routes:**
+2. **API points:**
 * __/__
-    * Shows all polls as a list to un/authenticated users.
+    * Asks about location of the user
+    * Shows all bars in the regio (Yelp API)
     * Links to:
         * Login Page
-        * Poll page (authenticated)
+        * 
         * New Poll Page (authenticated)
 * __/new-poll__(authenticated)
     * POST
@@ -49,7 +62,6 @@
 3. **Specifications:**
 
 * Front End:
-    * PUG(Jade)
     * jQuery
     * Materialize
 * Back End:
