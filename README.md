@@ -63,7 +63,7 @@
 
 * Front End:
     * jQuery
-    * Material UI
+    * Skeleton
 * Back End:
     * NodeJS
     * Express
