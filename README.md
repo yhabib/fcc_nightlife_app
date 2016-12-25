@@ -63,7 +63,7 @@
 
 * Front End:
     * jQuery
-    * Materialize
+    * Material UI
 * Back End:
     * NodeJS
     * Express
