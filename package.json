@@ -4,6 +4,7 @@
   "description": "Where are you going tonight?",
   "main": "server.js",
   "scripts": {
+    "start": "nodemon ./backend/server.js", 
     "test": "mocha -w server.js test.js"
   },
   "repository": {
@@ -27,10 +28,17 @@
   "homepage": "https://github.com/yhabib/fcc_nightlife_app#readme",
   "dependencies": {
     "body-parser": "^1.15.2",
+    "config": "^1.24.0",
     "express": "^4.14.0",
     "mongoose": "^4.7.4",
     "morgan": "^1.7.0",
     "passport": "^0.3.2",
     "passport-facebook": "^2.1.1"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "chai-http": "^3.0.0",
+    "dotenv": "^2.0.0",
+    "mocha": "^3.2.0"
   }
 }
