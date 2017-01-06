@@ -4,7 +4,7 @@
   "description": "Where are you going tonight?",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon ./backend/server.js", 
+    "start": "nodemon ./backend/server.js",
     "test": "mocha -w server.js test.js"
   },
   "repository": {
@@ -33,7 +33,9 @@
     "mongoose": "^4.7.4",
     "morgan": "^1.7.0",
     "passport": "^0.3.2",
-    "passport-facebook": "^2.1.1"
+    "passport-facebook": "^2.1.1",
+    "request-promise": "^4.1.1",
+    "yelp": "^1.0.2"
   },
   "devDependencies": {
     "chai": "^3.5.0",
