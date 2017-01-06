@@ -16,7 +16,7 @@ const express = require('express'),
 ********************************************************************************/
 
 const config = require('./config'),
-      api = require('./routes/routes');
+      api = require('./logic/routes');
 
 
 
