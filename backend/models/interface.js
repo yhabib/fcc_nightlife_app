@@ -3,32 +3,31 @@ let mongoose = require('mongoose'),
     Model = mongoose.model('Bar', schema, 'bars');
 
 
-exports.getClubsByRegion = function (id, callback) {
+exports.getClubsByLocation = function (region, callback) {
     let query = {
-        _id: id
+        region: region
     };
-    Model.findOne(query, callback);
+    Model.find(query, callback);
 };
 
 exports.saveLocal = function (id, region, callback) {
     let Bar = new Model({
-        placeId: id,
+        _id: id,
         region: region,
         visitorsCount: 1
     });
 
-    Poll.save(callback);
+    Bar.save(callback);
 }
 
 exports.removeLocal = function (id, callback) {
-    let query = { placeId: id };
+    let query = { _id: id };
 
     Model.findOneAndRemove(query, callback);
 }
-
-
+ 
 exports.addVisitorToLocal = function (id, callback) {
-    let query = { placeId: id },
+    let query = { _id: id },
         update = { $inc: { visitorsCount: 1 } },
         options = { new: false };
 
@@ -36,7 +35,7 @@ exports.addVisitorToLocal = function (id, callback) {
 };
 
 exports.removeVisitorFromLocal = function (id, callback) {
-    let query = { placeId: id },
+    let query = { _id: id },
         update = { $dec: { visitorsCount: 1 } },
         options = { new: false };
 

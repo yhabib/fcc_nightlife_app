@@ -1,7 +1,7 @@
 let mongoose = require('mongoose');
 
 module.exports = new mongoose.Schema({
-    placeId: {
+    _id: {
         type: String,
         required: true
     },
