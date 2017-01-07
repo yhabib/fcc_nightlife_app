@@ -36,7 +36,7 @@ exports.addVisitorToLocal = function (id, callback) {
 
 exports.removeVisitorFromLocal = function (id, callback) {
     let query = { _id: id },
-        update = { $dec: { visitorsCount: 1 } },
+        update = { $inc: { visitorsCount: -1 } },
         options = { new: false };
 
     Model.findOneAndUpdate(query, update, options, callback);

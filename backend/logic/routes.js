@@ -67,10 +67,30 @@ router
         });
     })
     .put('/locals/:location', (req, res) => {
+        let id = req.body.id,
+            op = req.body.op;
+        
+        if(op === 'add')
+            interface.addVisitorToLocal(id, err => {
+                if(err) throw err;
+                console.log("Added");                
+                res.sendStatus(200);
+            });
+        else   
+            interface.removeVisitorFromLocal(id, err => {
+                if(err) throw err;
+                console.log("Removed");                
+                res.sendStatus(200);
+            });
 
     })
     .delete('/locals/:location', (req, res) => {
+        let id = req.body.id;
 
+        interface.removeLocal(id, err => {
+            if(err) throw err;
+            else res.sendStatus(200);
+        });
     });
 
 
