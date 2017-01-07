@@ -1,6 +1,7 @@
 const express = require('express'),
     router = express.Router(),
-    controller = require('./controller');
+    controller = require('./controller'),
+    interface = require('./../models/interface');
 
 
 /**
@@ -28,26 +29,42 @@ router
         // check if the id is a valid one
         // make request
 
-        controller
-            .yelpRequest(location, sort)
-            .then(data => {
-                bars = data.businesses.map(bar => {
-                    return {
-                        name: bar.name,
-                        image_url: bar.image_url,
-                        snippet: bar.snippet_text,
-                        url: bar.url,
-                        rating: bar.rating,
-                        attending: []
-                    }
-                });
+        interface.getClubsByLocation(location, (err, docs) => {
+            if(err) throw err;
+            
+            let localBars = {};
+            docs.forEach(doc => localBars[doc._id] = doc.visitorsCount);
 
-                return res.status(200).json(bars);
-            })
-            .error(err => console.error(err));
+            controller
+                .yelpRequest(location, sort)
+                .then(data => {
+
+                    bars = data.businesses.map(bar => {
+                        return {
+                            name: bar.name,
+                            image_url: bar.image_url,
+                            snippet: bar.snippet_text,
+                            url: bar.url,
+                            rating: bar.rating,
+                            region: bar.location.city,
+                            id: bar.id,
+                            attending: localBars[bar.id] || 0
+                        }
+                    });
+
+                    return res.status(200).json(bars);
+                })
+                .error(err => console.error(err));
+        });
     })
     .post('/locals/:location', (req, res) => {
-
+        let id = req.body.id,
+            region = req.body.region;
+        
+        interface.saveLocal(id, region, err => {
+            if(err) throw err;
+            else res.sendStatus(200);
+        });
     })
     .put('/locals/:location', (req, res) => {
 
