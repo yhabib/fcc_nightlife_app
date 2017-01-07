@@ -8,5 +8,9 @@ module.exports = new mongoose.Schema({
     visitorsCount: {
         type: Number,
         required: true
+    },
+    region: {
+        type: String,
+        required: true
     }
 });
