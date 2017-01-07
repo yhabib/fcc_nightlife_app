@@ -5,7 +5,7 @@ const express = require('express'),
 
 /**
  * GET     /locals              ->  index
- * POST    /locals              ->  create
+ * POST    /locals/:location             ->  create
  * GET     /locals/:location          ->  show
  * PUT     /locals/:location          ->  update
  * DELETE  /locals/:location          ->  destroy
@@ -46,10 +46,13 @@ router
             })
             .error(err => console.error(err));
     })
-    .post('/going-to', (req, res) => {
+    .post('/locals/:location', (req, res) => {
 
     })
-    .post('/not-going-to', (req, res) => {
+    .put('/locals/:location', (req, res) => {
+
+    })
+    .delete('/locals/:location', (req, res) => {
 
     });
 
